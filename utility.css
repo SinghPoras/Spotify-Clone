@@ -1,3 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 .flex{
     display: flex;
 }
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: 10px;
+}
+button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: rgb(179, 179, 179);
+}
+
+/* 1110 ki jab width ho jaye to side-bar hta deni h */

@@ -4,67 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Spotify</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Spotify - Poras Singh</title>
+    <link rel="stylesheet" href="sidebar-style.css">
+    <link rel="stylesheet" href="main-style.css">
     <link rel="stylesheet" href="utility.css">
 </head>
 
 <body>
-    <div class="container flex">
+    <div class="container">
         <aside class="side-container">
             <div class="home">
-                <ul>
-                    <li><img src="ImagesUsed/logo.svg" alt="SpotifyLogo"></li>
-                    <li><img src="ImagesUsed/homeLogo.svg" alt="HomeLogo"> Home</li>
-                    <li><img src="ImagesUsed/searchLogo.svg" alt="">Search</li>
+                <ul class="flex">
+                    <li class="flex"><img src="ImagesUsed/logo.svg" alt="SpotifyLogo"></li>
+                    <li class="flex"><img src="ImagesUsed/homeLogo.svg" alt="HomeLogo"> Home</li>
+                    <li class="flex"><img src="ImagesUsed/searchLogo.svg" alt="">Search</li>
                 </ul>
             </div>
             <div class="library">
-                <div class="yourLibrary">
-                    <div class="your">
+                <div class="yourLibrary flex">
+                    <div class="your flex">
                         <img src="ImagesUsed/libraryLogo.svg" alt="LibraryLogo"> Your Library
                     </div>
-                    <img src="ImagesUsed/plusLogo.svg" alt="Plus">
+                    <button><img src="ImagesUsed/plusLogo.svg" alt="Plus"></button>
                 </div>
-                <div class="playlist-podcast">
-                    <div class="createPlaylist">
+                <div class="playlist-podcast flex">
+                    <div class="createPlaylist flex">
                         <div class="create">Create your first playlist</div>
                         <div class="easy">It's easy, we'll help you</div>
                         <button class="makeButton">Create Playlist</button>
                     </div>
-                    <div class="createPlaylist">
+                    <!-- <div class="createPlaylist flex">
                         <div class="create">Let's find some podcasts to follow</div>
                         <div class="easy">We'll keep you updated on new episodes</div>
-                        <button class="makeButton">Browse podcasts</button>
-                    </div>
+                        <button class="makeButton" id="browsePodcast" style="cursor: none;">Browse podcasts</button>
+                    </div> -->
                 </div>
-                <div class="extra-content">
+                <div class="extra-content flex">
                     <div class="privacy-cookies">
-                        <ul>
-                            <li>Legal</li>
-                            <li>Safety & Privacy Center</li>
-                            <li>Privacy Policy</li>
+                        <ul class="flex">
+                            <li><a href="https://www.spotify.com/in-en/legal/end-user-agreement/">Legal</a></li>
+                            <li><a href="https://www.spotify.com/in-en/safetyandprivacy/reporting-content">Safety & Privacy Center</a></li>
+                            <li><a href="https://www.spotify.com/in-en/legal/privacy-policy/">Privacy Policy</a></li>
                         </ul>
                     </div>
                     <div class="privacy-cookies">
-                        <ul>
-                            <li>Cookies</li>
-                            <li>About Ads</li>
-                            <li>Accessibility</li>
-                        </ul>
-                    </div>
-                    <div class="privacy-cookies">
-                        <ul>
-                            <li>Cookies</li>
+                        <ul class="flex">
+                            <li><a href="https://www.spotify.com/in-en/legal/cookies-policy/">Cookies</a></li>
+                            <li><a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3">About Ads</a></li>
+                            <li><a href="https://www.spotify.com/in-en/accessibility">Accessibility</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="language">
-                    <button class="langButton"><img class="lang-logo" src="ImagesUsed/langLogo.svg" alt="LangLogo">English</button>
+                    <button class="langButton flex"><img class="lang-logo" src="ImagesUsed/langLogo.svg" alt="LangLogo">English</button>
                 </div>
             </div>
         </aside>
-        <main class="main-container"></main>
+        <main class="main-container">
+            <header class="header flex">
+                <div class="left-right-arrow flex">
+                    <button class="arrow" id="leftarrow"><img src="ImagesUsed/leftArrow.svg" alt="LeftArrow"></button>
+                    <button class="arrow" id="rightarrow"><img src="ImagesUsed/rightArrow.svg" alt="RightArrow"></button>
+                </div>
+                <div class="log-sign flex">
+                    <button class="langButton signup">Sign Up</button>
+                    <button class="makeButton login">Log In</button>
+                </div>
+            </header>  
+            <div class="content-container">
+                <div class="heads">Popular Albums</div>
+                <div class="album-container flex">
+                    <div class="card">
+                        <div class="playButtonAlbum flex">
+                            <button><img src="ImagesUsed/playButtonAlbums.svg" alt="playButtonAlbum"></button>
+                        </div>
+                        <button>
+                            <img src="AlbumCoverPages/stillRollinAlbumPic.jpeg" alt="StillRollin">
+                            <div class="album-playlist-name">Still Rollin</div>
+                            <div class="discription">Shubh</div>
+                        </button>
+                    </div>
+                    <div class="card">
+                        <div class="playButtonAlbum flex">
+                            <button><img src="ImagesUsed/playButtonAlbums.svg" alt="playButtonAlbum"></button>
+                        </div>
+                        <button>
+                            <img src="AlbumCoverPages/fourYouAlbumPic.jpeg" alt="StillRollin">
+                            <div class="album-playlist-name">Four You</div>
+                            <div class="discription">Karan Aujla</div>
+                        </button>
+                    </div>    
+                </div>
+                <div class="heads">Popular Albums</div>
+                <div class="album-container flex">
+                    <div class="card">
+                        <div class="playButtonAlbum flex">
+                            <button><img src="ImagesUsed/playButtonAlbums.svg" alt="playButtonAlbum"></button>
+                        </div>
+                        <button>
+                            <img src="AlbumCoverPages/stillRollinAlbumPic.jpeg" alt="StillRollin">
+                            <div class="album-playlist-name">Still Rollin</div>
+                            <div class="discription">Shubh</div>
+                        </button>
+                    </div>
+                    <div class="card">
+                        <div class="playButtonAlbum flex">
+                            <button><img src="ImagesUsed/playButtonAlbums.svg" alt="playButtonAlbum"></button>
+                        </div>
+                        <button>
+                            <img src="AlbumCoverPages/fourYouAlbumPic.jpeg" alt="StillRollin">
+                            <div class="album-playlist-name">Four You</div>
+                            <div class="discription">Karan Aujla</div>
+                        </button>
+                    </div>    
+                </div>
+            </div>    
+        </main>
+        <footer>
+            <div class="player-controls">
+                <p>Lorem, ipsum.</p>
+            </div>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>

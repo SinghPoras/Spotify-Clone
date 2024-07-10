@@ -1,0 +1,124 @@
+:root{
+    --background-color: rgb(20, 20, 20);
+    --logo-color : rgb(179,179,179);
+    --block-color : rgb(36,36,36);
+    --font-size : 16px;
+    --padding-20 : 20px;
+    --font-weight-700 : 700;
+    --hover-color-album : rgb(28,28,28);
+}
+.arrow{
+    background-color: black;
+    padding: 8px;
+    border-radius: 50%;
+}
+.left-right-arrow{
+    gap: 10px;
+    text-align: center;
+}
+.signup{
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    color: var(--logo-color);
+    transition: transform 0.3s;
+}
+.login{
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+.header{
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: rgb(15, 15, 15);
+    opacity: 1;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+.log-sign{
+    gap: 20px;
+}
+.signup:hover{
+    transform: scale(1.05);
+    color: white;
+    border: none;
+}
+.login:hover{
+    transform: scale(1.05);
+}
+.player-controls{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--background-color);
+    color: var(--logo-color);
+    box-sizing: border-box;
+
+}
+.heads{
+    font-size: 32px;
+    font-weight: var(--font-weight-700);
+    padding: 40px 20px;
+}
+.card:hover{
+    background-color: var(--hover-color-album);
+}
+.card{
+    padding: 10px;
+    position: relative;
+    color: white;
+    border-radius: 15px;
+    width: 150px;
+}
+.card img{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+
+}
+.album-playlist-name{
+    font-size: 16px;
+    padding: 10px;
+    color: white;
+    text-align: left;
+}
+.discription{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--logo-color);
+    padding: 5px 10px;
+    text-align: left;
+}
+.album-container{
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 10px;
+}
+footer{
+    grid-area: player;
+}
+.playButtonAlbum{
+    position: absolute;
+    top: 136px;
+    left: 103px;
+    padding: 9px 13px;
+    padding-top: 12px;
+    border-radius: 50%;
+    background-color: #1fdf64;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0,0,0,0.99);
+}
+.buttonHover:hover{
+    opacity: 1;
+    top: 106px;
+    box-shadow: 0px 0px 8px var(--background-color);
+}
