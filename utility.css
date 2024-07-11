@@ -12,6 +12,7 @@
     background-color: gray;
     border-radius: 10px;
 }
+
 button {
     background: none;
     border: none;
@@ -22,6 +23,9 @@ button {
 a{
     text-decoration: none;
     color: rgb(179, 179, 179);
+}
+html{
+    scroll-behavior: smooth;
 }
 
 /* 1110 ki jab width ho jaye to side-bar hta deni h */

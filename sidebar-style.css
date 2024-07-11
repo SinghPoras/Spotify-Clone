@@ -31,7 +31,7 @@ body{
     margin: 5px;
     border-radius: 10px;
     overflow-y: scroll;
-    height: 85vh;
+    height: 85.2vh;
     box-sizing: border-box;
     grid-area: main;
 }

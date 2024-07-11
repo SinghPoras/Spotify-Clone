@@ -1,0 +1,60 @@
+:root{
+    --background-color: rgb(20, 20, 20);
+    --logo-color : rgb(179,179,179);
+    --block-color : rgb(36,36,36);
+    --font-size : 16px;
+    --padding-20 : 20px;
+    --font-weight-700 : 700;
+    --hover-color-album : rgb(28,28,28);
+}
+.player-controls{
+    height: 10.5vh;
+    padding: 0px 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+.info{
+    display: grid;
+    grid-template-areas: "info-img song-name"
+                         "info-img artist-name";
+}
+.info img{
+    height: 10vh;
+    border-radius: 10px;
+}
+.info-image{
+    grid-area: info-img;
+}
+.song-name{
+    grid-area: song-name;
+    align-self: flex-end;
+    padding: 5px 15px; 
+}
+.artist-player{
+    padding: 5px 15px;
+    font-size: 12px;
+    grid-area: artist-name;
+    align-self: flex-start;
+}
+.buttons{
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.button-duration{
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.duration{
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.volume-bar{
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

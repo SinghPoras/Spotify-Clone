@@ -1,14 +1,23 @@
-// let cardList = document.querySelectorAll(".card")
-// let cardArray = [].slice.call(cardList);
-// cardArray.forEach(element => {
-//     console.log(element)
-//     let button = element.querySelector(".playButtonAlbum")
-//     element.addEventListener("mousemove", function(){
-//         button.classList.add('buttonHover')
-//         console.log(button.classList)
-//     })
-//     element.addEventListener("mouseout",function(){
-//         button.classList.remove('buttonHover')
-//         console.log(button.classList)
-//     })
-// });
+async function getSongs(){
+    let a = await fetch('http://127.0.0.1:3000/Web%20Dev%20Projects/Spotify-Clone/Songs/')
+    let response = await a.text();
+    let div = document.createElement("div")
+    div.innerHTML = response;
+    let as = div.getElementsByTagName("a")
+    let songs = []
+    for (let i = 0; i < as.length; i++){
+        const element =as[i]
+        if(element.href.endsWith(".mp3")){
+            songs.push(element.href)
+        }  
+    }
+    return songs
+}
+
+async function main(){
+    let songArray = await getSongs()
+    let audio = new Audio(songArray[])
+    audio.play()
+}
+
+main()
