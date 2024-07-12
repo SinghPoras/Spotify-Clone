@@ -9,24 +9,27 @@
 }
 .player-controls{
     height: 10.5vh;
-    padding: 0px 20px;
+    padding: 2px 30px;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: var(--block-color);
+    border-radius: 50px;
 }
 .info{
     display: grid;
     grid-template-areas: "info-img song-name"
                          "info-img artist-name";
+    align-items: center;
 }
 .info img{
-    height: 10vh;
+    max-height: 70px;
+    max-width: 70px;
     border-radius: 10px;
 }
 .info-image{
     grid-area: info-img;
 }
-.song-name{
+.songname{
     grid-area: song-name;
     align-self: flex-end;
     padding: 5px 15px; 
