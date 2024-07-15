@@ -77,14 +77,17 @@
     height: 4px;
     background-color: rgba(91, 91, 91, 0.7);
     border-radius: 4px;
+    cursor: pointer;
 }
 #circle{
     position: relative;
-    /* top: -2px; */
-    /* left: 0px; */
     height: 4px;
     width: 4px;
     border-radius: 4px;
     background-color: white;
-    transition: width 0.5s;
+    transition: width 0.3s;
+}
+.durationText{
+    font-size: 14px;
+    color: #b3b3b3;
 }

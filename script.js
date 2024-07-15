@@ -161,15 +161,19 @@ async function main() {
 
     let widthSeekbar = window.getComputedStyle(document.getElementById('seekbar')).getPropertyValue('width').split("px")[0];
     let widthInt = parseInt(widthSeekbar) 
-    console.log(widthSeekbar)
-    console.log(widthInt)
     audio.addEventListener("timeupdate", () => {
         console.log((widthInt/audio.duration)*audio.currentTime)
         document.querySelector(".total-duration").innerHTML = timeInMinutes(audio.duration)
         document.querySelector(".current-duration").innerHTML = timeInMinutes(audio.currentTime)
 
         let circleStyle = document.getElementById('circle').style
-        circleStyle.width = `${((widthInt/audio.duration)*audio.currentTime)+4}px`
+        circleStyle.width = `${((widthInt/audio.duration)*audio.currentTime)}px`
+    })
+
+    document.getElementById("seekbar").addEventListener('click',(e)=>{
+        let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
+        document.getElementById("circle").style.width = percent + "%";
+        audio.currentTime = (audio.duration * percent)/100
     })
 }
 
