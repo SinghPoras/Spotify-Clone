@@ -1,22 +1,26 @@
-:root{
+:root {
     --background-color: rgb(20, 20, 20);
-    --logo-color : rgb(179,179,179);
-    --block-color : rgb(36,36,36);
-    --font-size : 16px;
-    --padding-20 : 20px;
-    --font-weight-700 : 700;
+    --logo-color: rgb(179, 179, 179);
+    --block-color: rgb(36, 36, 36);
+    --font-size: 16px;
+    --padding-20: 20px;
+    --font-weight-700: 700;
 
 }
-.arrow{
+
+
+.arrow {
     background-color: black;
     padding: 8px;
     border-radius: 50%;
 }
-.left-right-arrow{
+
+.left-right-arrow {
     gap: 10px;
     text-align: center;
 }
-.signup{
+
+.signup {
     border: none;
     padding: 15px 30px;
     border-radius: 30px;
@@ -24,13 +28,15 @@
     color: var(--logo-color);
     transition: transform 0.3s;
 }
-.login{
+
+.login {
     padding: 15px 30px;
     border-radius: 30px;
     font-size: 16px;
     transition: transform 0.3s;
 }
-.header{
+
+.header {
     justify-content: space-between;
     align-items: center;
     padding: 8px 20px;
@@ -40,61 +46,62 @@
     top: 0px;
     z-index: 1;
 }
-.log-sign{
+
+.log-sign {
     gap: 20px;
 }
-.signup:hover{
+
+.signup:hover {
     transform: scale(1.05);
     color: white;
     border: none;
 }
-.login:hover{
+
+.login:hover {
     transform: scale(1.05);
 }
-.player-controls{
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: var(--background-color);
-    color: var(--logo-color);
-    box-sizing: border-box;
 
-}
-.heads{
+.heads {
     font-size: 32px;
     font-weight: var(--font-weight-700);
     padding: 40px 20px;
 }
-.card:hover{
+
+.line:hover {
     background-color: var(--block-color);
 }
-.card{
+
+.card {
     padding: 10px;
     position: relative;
     color: white;
     border-radius: 15px;
     width: 150px;
 }
-.card img{
+
+.card img {
     width: 100%;
     object-fit: contain;
     border-radius: 10px;
-
+    
 }
-.album-playlist-name{
+
+.album-playlist-name {
     font-size: 16px;
     padding: 10px;
     color: white;
     text-align: left;
 }
-.discription{
+
+.discription {
     font-size: 14px;
     font-weight: 400;
     color: var(--logo-color);
     padding: 5px 10px;
     text-align: left;
 }
-.album-container{
+
+.album-container {
     display: grid;
     grid-template-areas: "11 12 13 14 15 16"
                          "21 22 23 24 25 26"
@@ -106,10 +113,96 @@
     align-items: center;
     padding: 0px 10px;
 }
-footer{
+
+@media only screen and (max-width : 1434px) {
+    .album-container {
+        display: grid;
+        grid-template-areas: "11 12 13 14 15"
+                             "21 22 23 24 25"
+                             "31 32 33 34 35"
+                             "41 42 43 44 45"
+                             "51 52 53 54 55";
+        gap: 10px;
+        row-gap: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+}
+@media only screen and (max-width : 1201px) {
+    .album-container {
+        display: grid;
+        grid-template-areas: "11 12 13 14"
+                             "21 22 23 24"
+                             "31 32 33 34"
+                             "41 42 43 44"
+                             "51 52 53 54"
+                             "61 62 63 64";
+        gap: 10px;
+        row-gap: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+}
+@media only screen and (max-width : 971px) {
+    .album-container {
+        display: grid;
+        grid-template-areas: "11 12 13"
+                             "21 22 23"
+                             "31 32 33"
+                             "41 42 43"
+                             "51 52 53"
+                             "61 62 63"
+                             "71 72 73"
+                             "81 82 83";
+        gap: 10px;
+        row-gap: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+}
+@media only screen and (max-width : 736px) {
+    .album-container {
+        display: grid;
+        grid-template-areas: "11 12"
+                             "21 22"
+                             "31 32"
+                             "41 42"
+                             "51 52"
+                             "61 62"
+                             "71 72"
+                             "81 82"
+                             "91 92"
+                             "101 102"
+                             "111 112"
+                             "121 122";
+        gap: 10px;
+        row-gap: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+}
+@media only screen and (max-width : 520px) {
+    .album-container {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        gap: 10px;
+        row-gap: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+}
+
+footer {
     grid-area: player;
 }
-.playButtonAlbum{
+
+.playButtonAlbum {
     position: absolute;
     top: 136px;
     left: 103px;
@@ -121,50 +214,134 @@ footer{
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: all 0.5s cubic-bezier(0,0,0,0.99);
+    transition: all 0.5s cubic-bezier(0, 0, 0, 0.99);
 }
-.playButtonAlbum:hover{
+
+.playButtonAlbum:hover {
     opacity: 1;
     top: 106px;
     box-shadow: 0px 0px 10px var(--background-color);
 }
-.extra-links{
+
+.extra-links {
     display: grid;
     grid-template-areas: "Company Communities Links Plans OtherPages"
-                         "line line line line line"
-                         "copy copy copy copy copy";
+        "line line line line line"
+        "copy copy copy copy copy";
     padding: 50px 30px;
     margin-top: 30px;
 
 }
-.list ul{
+
+.list ul {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-.list li{
+
+.list li {
     list-style: none;
     color: var(--logo-color);
 }
-.list ul li a:hover{
+
+.list ul li a:hover {
     color: white;
 }
-.company{
+
+.company {
     grid-area: Company;
 }
-.artist-container .card img{
+
+.artist-container .card img {
     border-radius: 150px;
     height: 150px;
     width: 150px;
     object-fit: cover;
 }
-.line{
-    grid-area: line;
+.card:hover{
+    background-color: var(--block-color);
+}
+
+.playlist {
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+
+.info-library {
+    display: grid;
+    grid-template-areas: "info-img song-name"
+        "info-img artist-name";
+    align-items: center;
+}
+
+.count-name {
+    align-items: center;
+    gap: 20px;
+}
+
+.count {
+    width: 38px;
+}
+
+.count-name:first-child {
+    color: var(--logo-color);
+    font-size: 20px;
+}
+
+.nameSong {
+    align-self: flex-end;
+    padding: 5px 20px;
+    font-size: 16px;
+    color: white;
+    text-align: left;
+    justify-self: flex-start;
+}
+
+.artist {
+    align-self: flex-start;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--logo-color);
+    padding: 5px 20px;
+    text-align: left;
+}
+
+.song-name {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+#play {
+    grid-area: play;
+}
+
+.song-name:hover {
+    background-color: var(--block-color);
+}
+
+.lineAfterSongs {
+    width: 95%;
+    margin: auto;
     height: 1px;
-    background-color: rgb(50,50,50);
+    background-color: rgb(50, 50, 50);
     margin-top: 40px;
 }
-.copyright{
+
+.line {
+    grid-area: line;
+    height: 1px;
+    background-color: rgb(50, 50, 50);
+    margin-top: 40px;
+}
+
+.copyright {
     display: flex;
     justify-content: space-between;
     grid-area: copy;
@@ -173,16 +350,19 @@ footer{
     color: var(--logo-color);
     font-size: 14px;
 }
-.social-links{
+
+.social-links {
     align-self: flex-start;
 }
-.social-links ul{
+
+.social-links ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }
-.social-links ul li{
+
+.social-links ul li {
     padding-top: 10px;
     border-radius: 50%;
     list-style: none;
@@ -191,6 +371,7 @@ footer{
     padding-left: 10px;
     padding-right: 10px;
 }
-.social-links ul li:hover{
+
+.social-links ul li:hover {
     background-color: rgb(100, 100, 100);
 }

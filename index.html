@@ -29,27 +29,14 @@
                     </div>
                     <button><img src="ImagesUsed/plusLogo.svg" alt="Plus"></button>
                 </div>
-                <div class="playlist flex">
-                    <!-- <div class="song-name">
-                        <div class="count-name flex">
-                            <div class="count">1.</div>
-                            <div class="info-library">
-                                <div class="info-image"><img src="ImagesUsed/musicLogo.svg" alt="Music"></div>
-                                <div class="album-playlist-name nameSong">52 Bars</div>
-                                <div class="discription artist">Karan Aujla</div>
-                            </div>
+                <div class="link-to-your-songs flex" onclick="toBeScrolled()">Songs <img src="ImagesUsed/arrow.svg" alt="Arrow"></div>
+                <div id="favorites-container" class="albums-name flex">
+                    <!-- <div class="artist-album-card">
+                        <div class="imageLibrary">
+                            <img src="ArtistPic/Shubh.jpeg" alt="ArtistPic">
                         </div>
-                        <button id="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
-                    </div> -->
-                    <!-- <div class="createPlaylist flex">
-                        <div class="create">Create your first playlist</div>
-                        <div class="easy">It's easy, we'll help you</div>
-                        <button class="makeButton">Create Playlist</button>
-                    </div> -->
-                    <!-- <div class="createPlaylist flex">
-                        <div class="create">Let's find some podcasts to follow</div>
-                        <div class="easy">We'll keep you updated on new episodes</div>
-                        <button class="makeButton" id="browsePodcast" style="cursor: none;">Browse podcasts</button>
+                        <div id="singername" class="nameSong">Shubh</div>
+                        <div class="artist">Artist</div>
                     </div> -->
                 </div>
                 <div class="extra-content flex">
@@ -110,25 +97,43 @@
                             <div class="discription">Karan Aujla</div>
                         </button>
                     </div>
-                    
+
                 </div>
                 <div class="heads">Popular Artists</div>
                 <div class="artist-container album-container">
-                    <div class="card">
+                    <!-- <div class="card">
                         <button>
-                            <img src="ArtistPic/KaranAujlaPic.jpeg" alt="KaranAujla">
-                            <div class="album-playlist-name">Karna Aujla</div>
-                            <div class="discription">Artist</div>
-                        </button>
-                    </div>
-                    <div class="card">
-                        <button>
-                            <img src="ArtistPic/ShubhPic.jpeg" alt="Shubh">
+                            <img src="ArtistPic/Shubh.jpeg" alt="Shubh">
                             <div class="album-playlist-name">Shubh</div>
                             <div class="discription">Artist</div>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
+                <div class="heads" id="toBeScrolled">Songs</div>
+                <div class="playlist flex">
+                    <!-- <div class="song-name">
+                        <div class="count-name flex">
+                            <div class="count">100.</div>
+                            <div class="info-library">
+                                <div class="info-image"><img src="ImagesUsed/musicLogo.svg" alt="Music"></div>
+                                <div class="nameSong">52 Bars</div>
+                                <div class="artist">Karan Aujla</div>
+                            </div>
+                        </div>
+                        <button id="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
+                    </div> -->
+                    <!-- <div class="createPlaylist flex">
+                                    <div class="create">Create your first playlist</div>
+                                    <div class="easy">It's easy, we'll help you</div>
+                                    <button class="makeButton">Create Playlist</button>
+                                </div> -->
+                    <!-- <div class="createPlaylist flex">
+                                    <div class="create">Let's find some podcasts to follow</div>
+                                    <div class="easy">We'll keep you updated on new episodes</div>
+                                    <button class="makeButton" id="browsePodcast" style="cursor: none;">Browse podcasts</button>
+                                </div> -->
+                </div>
+                <div class="lineAfterSongs"></div>
                 <div class="extra-links">
                     <div class="company list">
                         <ul>
@@ -158,18 +163,27 @@
                     <div class="list flex">
                         <ul>
                             <li style="color: white; font-weight: 700;">Spotify Plans</li>
-                            <li><a href="https://www.spotify.com/in-en/premium/?ref=spotifycom_footer_premium_individual">Premium Individual</a></li>
-                            <li><a href="https://www.spotify.com/in-en/duo/?ref=spotifycom_footer_premium_duo">Premium Duo</a></li>
-                            <li><a href="https://www.spotify.com/in-en/family/?ref=spotifycom_footer_premium_family">Premium Family</a></li>
-                            <li><a href="https://www.spotify.com/in-en/student/?ref=spotifycom_footer_premium_student">Premium Students</a></li>
-                            <li><a href="https://www.spotify.com/in-en/free/?ref=spotifycom_footer_free">Spotify Free</a></li>
+                            <li><a
+                                    href="https://www.spotify.com/in-en/premium/?ref=spotifycom_footer_premium_individual">Premium
+                                    Individual</a></li>
+                            <li><a href="https://www.spotify.com/in-en/duo/?ref=spotifycom_footer_premium_duo">Premium
+                                    Duo</a></li>
+                            <li><a href="https://www.spotify.com/in-en/family/?ref=spotifycom_footer_premium_family">Premium
+                                    Family</a></li>
+                            <li><a href="https://www.spotify.com/in-en/student/?ref=spotifycom_footer_premium_student">Premium
+                                    Students</a></li>
+                            <li><a href="https://www.spotify.com/in-en/free/?ref=spotifycom_footer_free">Spotify
+                                    Free</a></li>
                         </ul>
                     </div>
                     <div class="social-links">
                         <ul>
-                            <li><a href="https://www.instagram.com/spotify/"><img src="ImagesUsed/instaLogo.svg" alt="Instagram"></a></li>
-                            <li><a href="https://x.com/spotify"><img src="ImagesUsed/twitterXLogo.svg" alt="Twitter"></a></li>
-                            <li><a href="https://www.facebook.com/Spotify"><img src="ImagesUsed/facebook.svg" alt=""></a></li>
+                            <li><a href="https://www.instagram.com/spotify/"><img src="ImagesUsed/instaLogo.svg"
+                                        alt="Instagram"></a></li>
+                            <li><a href="https://x.com/spotify"><img src="ImagesUsed/twitterXLogo.svg"
+                                        alt="Twitter"></a></li>
+                            <li><a href="https://www.facebook.com/Spotify"><img src="ImagesUsed/facebook.svg"
+                                        alt=""></a></li>
                         </ul>
                     </div>
                     <div class="line"></div>
@@ -183,20 +197,25 @@
         <footer>
             <div class="player-controls flex">
                 <div class="info">
-                    <div class="info-image"><img src="AlbumCoverPages/fourYouAlbumPic.jpeg" alt="FourYou"></div>
-                    <div class="album-playlist-name songname">52 Bars</div>
-                    <div class="discription artist-player">Karan Aujla</div>
+                    <div id="disc" class="info-image"><img src="ImagesUsed/musicDisc.svg" alt="Pic"></div>
+                    <div class="album-playlist-name songname"></div>
+                    <div class="discription artist-player"></div>
                 </div>
                 <div class="button-duration flex">
-                    <div class="buttons flex">
-                        <button><img src="ImagesUsed/prevButton.svg" alt="PrevButton"></button>
-                        <button id="buttonPlayPause"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
-                        <button><img src="ImagesUsed/nextButton.svg" alt="NextButton"></button>
+                    <div class="durationPlaybar flex">
+                        <div class="current-duration">00:00</div>
+                        <div class="buttons flex">
+                            <button><img src="ImagesUsed/prevButton.svg" alt="PrevButton"></button>
+                            <button id="buttonPlayPause"><img src="ImagesUsed/playButton.svg"
+                                    alt="PlayPauseButton"></button>
+                            <button><img src="ImagesUsed/nextButton.svg" alt="NextButton"></button>
+                        </div>
+                        <div class="total-duration">00:00</div>
                     </div>
-                    <div class="duration flex">
-                        <div class="current-duration">1:14</div>
-                        <div class="duration-bar"><input type="range" min="0"></div>
-                        <div class="total-duration">3:28</div>
+                    <div class="seekbar-circle">
+                        <div id="seekbar">
+                            <div id="circle"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="volume-bar flex">

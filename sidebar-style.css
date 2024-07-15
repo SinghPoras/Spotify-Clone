@@ -31,7 +31,7 @@ body{
     margin: 5px;
     border-radius: 10px;
     overflow-y: scroll;
-    height: 85.2vh;
+    height: calc(100vh - 106px);
     box-sizing: border-box;
     grid-area: main;
 }
@@ -39,7 +39,6 @@ body{
     background-color: var(--background-color);
     padding: var(--padding-20);
     border-radius: 10px;
-    height: 15vh;
 }
 .home ul{
     flex-direction: column;
@@ -63,8 +62,9 @@ body{
     background-color: var(--background-color);
     margin-top: 10px;
     border-radius: 10px;
-    height: 63.25vh;
+    height: calc(100vh - 268px);
     overflow-y: scroll;
+    box-sizing: border-box;
 }
 .yourLibrary{
     justify-content: space-between;
@@ -73,6 +73,7 @@ body{
     position: sticky;
     top: 0px;
     background-color: var(--background-color);
+    z-index: 1;
 }
 .your{
     align-items: center;
@@ -80,48 +81,50 @@ body{
     font-weight: var(--font-weight-700);
     color: var(--logo-color);
 }
-.playlist{
+.albums-name{
     flex-direction: column;
     gap: 10px;
-    overflow: auto;
+    overflow-y: auto;
     border-radius: 10px;
     box-sizing: border-box;
     padding: 0px 10px;
 }
-.info-library{
+.artist-album-card{
     display: grid;
-    grid-template-areas: "info-img song-name"
-                         "info-img artist-name";
-    align-items: center;
-}
-.count-name{
-    align-items: center;
-    gap: 10px;
-}
-.count-name:first-child{
-    color: var(--logo-color);
-    font-size: 20px;
-}
-.nameSong{
-    align-self: flex-end;
-    padding: 20px 5px;
-}
-.artist{
-    align-self: flex-start;
-    padding: 20px 5px;
-    font-size: 12px;
-}
-.song-name{
-    display: flex;
-    justify-content: space-between;
     padding: 5px 10px;
+    grid-template-areas: "image artistname"
+                         "image description";
     border-radius: 10px;
+    justify-content: flex-start;
+}
+.link-to-your-songs{
+    font-size: 20px;
+    font-weight: var(--font-weight-700);
+    padding: 20px;
+    color: var(--logo-color);
+    cursor: pointer;
     align-items: center;
+    opacity: 0.6;
 }
-#play{
-   grid-area: play;
+.link-to-your-songs img{
+    padding-top: 3px;
+    height: 25px;
+    width: 25px;
 }
-.song-name:hover{
+.link-to-your-songs:hover{
+    opacity: 1;
+}
+.imageLibrary{
+    grid-area: image;
+    max-width: 70px;
+}
+.imageLibrary img{
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.artist-album-card:hover{
     background-color: var(--block-color);
 }
 .createPlaylist{

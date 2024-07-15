@@ -8,23 +8,21 @@
     --hover-color-album : rgb(28,28,28);
 }
 .player-controls{
-    height: 10.5vh;
-    padding: 2px 30px;
+    height: 77px;
+    padding: 0px 5px;
+    margin: 5px;
     justify-content: space-between;
     align-items: center;
     background-color: var(--block-color);
-    border-radius: 50px;
+    border-radius: 15px;
 }
 .info{
     display: grid;
     grid-template-areas: "info-img song-name"
                          "info-img artist-name";
     align-items: center;
-}
-.info img{
-    max-height: 70px;
-    max-width: 70px;
-    border-radius: 10px;
+    justify-content: center;
+    padding: 2px;
 }
 .info-image{
     grid-area: info-img;
@@ -51,6 +49,11 @@
     justify-content: center;
     align-items: center;
 }
+.durationPlaybar{
+    width: 40vw;
+    justify-content: space-between;
+    gap: 40px;
+}
 .duration{
     align-items: center;
     justify-content: center;
@@ -60,4 +63,28 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+#disc img{
+    position: relative;
+    width: 55px;
+    height: 63px;
+    border-radius: 10px;
+    object-fit: cover;
+    top: 2px;
+}
+#seekbar{
+    width: 40vw;
+    height: 4px;
+    background-color: rgba(91, 91, 91, 0.7);
+    border-radius: 4px;
+}
+#circle{
+    position: relative;
+    /* top: -2px; */
+    /* left: 0px; */
+    height: 4px;
+    width: 4px;
+    border-radius: 4px;
+    background-color: white;
+    transition: width 0.5s;
 }
