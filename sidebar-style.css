@@ -14,28 +14,28 @@ body{
     overflow: hidden;
 }
 .container{
-    display: grid;
-    grid-template-areas: "side main"
-                         "player player";
+    display: flex;
 }
 .side-container{
     width: 22vw;
     margin: 5px;
     border-radius: 10px;
     box-sizing: border-box;
-    grid-area: side;
+    transition: left 0.5s;
 }
 .main-container{
     width: calc(100vw - 22.75vw - 20px);
     background-color: var(--background-color);
     margin: 5px;
     border-radius: 10px;
+    overflow-x: hidden;
     overflow-y: scroll;
     height: calc(100vh - 106px);
     box-sizing: border-box;
-    grid-area: main;
+    transition: opacity 0.5s;
 }
 .home{
+    position: relative;
     background-color: var(--background-color);
     padding: var(--padding-20);
     border-radius: 10px;
@@ -57,6 +57,13 @@ body{
 .home ul li:hover{
     cursor: pointer;
     color: white;
+}
+.closeButton{
+    position: absolute;
+    width: 0px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 .library{
     background-color: var(--background-color);
@@ -191,8 +198,36 @@ body{
     color: white;
     font-weight: var(--font-weight-700);
     border: 1px solid var(--logo-color);
-    transition: transform 0.3s;
+    transition: transform 0.5s;
+}
+.hamburger{
+    width: 0px;
+    height: 0px;
+    cursor: pointer;
 }
 
+@media only screen and (max-width : 1120px) {
+    .side-container{
+        width: 300px;
+        position: absolute;
+        left: -200%;
+        z-index: 2;
+        background-color: black;
+    }
+    .main-container{
+        width: calc(100vw - 20px);
+    }
+    .hamburger{
+        width: 20px;
+        height: 20px;
+    }
+    .closeButton{
+        width: 34px;
+    }
+}
 
-
+@media only screen and (max-width : 950px) {
+    .main-container, .side-container{
+        height: calc(100vh - 105px);
+    }
+}

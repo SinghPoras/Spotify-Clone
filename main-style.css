@@ -8,16 +8,17 @@
 
 }
 
-
 .arrow {
     background-color: black;
     padding: 8px;
     border-radius: 50%;
+    cursor: no-drop;
 }
 
 .left-right-arrow {
     gap: 10px;
     text-align: center;
+    align-items: center;
 }
 
 .signup {
@@ -41,9 +42,8 @@
     align-items: center;
     padding: 8px 20px;
     background-color: rgb(15, 15, 15);
-    opacity: 1;
     position: sticky;
-    top: 0px;
+    top : -1px;
     z-index: 1;
 }
 
@@ -62,9 +62,46 @@
 }
 
 .heads {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: var(--font-weight-700);
-    padding: 40px 20px;
+    padding: 35px 15px;
+}
+
+@media only screen and (max-width : 430px) {
+    .login, .signup{
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    .log-sign{
+        gap: 10px;
+    }
+    .heads{
+        font-size: 24px;
+        padding: 20px 10px;
+    }
+}
+
+@media only screen and (max-width : 375px) {
+    .log-sign{
+        gap: 5px;
+    }
+}
+
+@media only screen and (max-width : 355px) {
+    .log-sign{
+        gap: 5px;
+    }
+    .login, .signup{
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
+
+
+@media only screen and (max-width : 315px) {
+    .heads{
+        padding: 15px 5px;
+    }
 }
 
 .line:hover {
@@ -103,103 +140,51 @@
 
 .album-container {
     display: grid;
-    grid-template-areas: "11 12 13 14 15 16"
-                         "21 22 23 24 25 26"
-                         "31 32 33 34 35 36"
-                         "41 42 43 44 45 46";
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
-    row-gap: 20px;
     justify-content: flex-start;
     align-items: center;
     padding: 0px 10px;
 }
 
-@media only screen and (max-width : 1434px) {
+@media only screen and (max-width: 1370px) {
     .album-container {
-        display: grid;
-        grid-template-areas: "11 12 13 14 15"
-                             "21 22 23 24 25"
-                             "31 32 33 34 35"
-                             "41 42 43 44 45"
-                             "51 52 53 54 55";
-        gap: 10px;
-        row-gap: 20px;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;
-    }
-}
-@media only screen and (max-width : 1201px) {
-    .album-container {
-        display: grid;
-        grid-template-areas: "11 12 13 14"
-                             "21 22 23 24"
-                             "31 32 33 34"
-                             "41 42 43 44"
-                             "51 52 53 54"
-                             "61 62 63 64";
-        gap: 10px;
-        row-gap: 20px;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;
-    }
-}
-@media only screen and (max-width : 971px) {
-    .album-container {
-        display: grid;
-        grid-template-areas: "11 12 13"
-                             "21 22 23"
-                             "31 32 33"
-                             "41 42 43"
-                             "51 52 53"
-                             "61 62 63"
-                             "71 72 73"
-                             "81 82 83";
-        gap: 10px;
-        row-gap: 20px;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;
-    }
-}
-@media only screen and (max-width : 736px) {
-    .album-container {
-        display: grid;
-        grid-template-areas: "11 12"
-                             "21 22"
-                             "31 32"
-                             "41 42"
-                             "51 52"
-                             "61 62"
-                             "71 72"
-                             "81 82"
-                             "91 92"
-                             "101 102"
-                             "111 112"
-                             "121 122";
-        gap: 10px;
-        row-gap: 20px;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;
-    }
-}
-@media only screen and (max-width : 520px) {
-    .album-container {
-        display: flex;
-        flex-grow: 1;
-        flex-direction: column;
-        gap: 10px;
-        row-gap: 20px;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
-footer {
-    grid-area: player;
+@media only screen and (max-width: 890px) {
+    .album-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .album-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .album-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .album-container, .artist-container{
+        padding: 0px;
+    }
+    .artist-container .card{
+        width: 120px;
+    }
+    .album-container .card{
+        width: 120px;
+    }
+    .artist-container .card button img{
+        width: 120px;
+        height: 120px;
+    }
 }
 
 .playButtonAlbum {
@@ -223,30 +208,6 @@ footer {
     box-shadow: 0px 0px 10px var(--background-color);
 }
 
-.extra-links {
-    display: grid;
-    grid-template-areas: "Company Communities Links Plans OtherPages"
-        "line line line line line"
-        "copy copy copy copy copy";
-    padding: 50px 30px;
-    margin-top: 30px;
-
-}
-
-.list ul {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.list li {
-    list-style: none;
-    color: var(--logo-color);
-}
-
-.list ul li a:hover {
-    color: white;
-}
 
 .company {
     grid-area: Company;
@@ -274,7 +235,7 @@ footer {
 .info-library {
     display: grid;
     grid-template-areas: "info-img song-name"
-        "info-img artist-name";
+    "info-img artist-name";
     align-items: center;
 }
 
@@ -284,12 +245,9 @@ footer {
 }
 
 .count {
-    width: 38px;
-}
-
-.count-name:first-child {
     color: var(--logo-color);
     font-size: 20px;
+    width: 38px;
 }
 
 .nameSong {
@@ -318,12 +276,40 @@ footer {
     align-items: center;
 }
 
-#play {
+.play {
     grid-area: play;
 }
 
 .song-name:hover {
     background-color: var(--block-color);
+}
+
+@media only screen and (max-width : 540px) {
+    .count{
+        font-size: 16px;
+        width: 31px;
+    }
+    .info-image{
+        width: 20px;
+    }
+    .info-image img{
+        width: 20px;
+    }
+    .play img{
+        width: 20px;
+    }
+    .nameSong{
+        font-size: 14px;
+        padding: 3px 10px;
+        max-height: 16px;
+        overflow: hidden;
+    }
+    .artist{
+        font-size: 12px;
+        padding: 3px 10px;
+        max-height: 13px;
+        overflow: hidden;
+    }
 }
 
 .lineAfterSongs {
@@ -334,21 +320,33 @@ footer {
     margin-top: 40px;
 }
 
-.line {
-    grid-area: line;
-    height: 1px;
-    background-color: rgb(50, 50, 50);
-    margin-top: 40px;
+.list ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.copyright {
-    display: flex;
-    justify-content: space-between;
-    grid-area: copy;
-    margin-top: 40px;
-    margin-bottom: 30px;
+.list li {
+    list-style: none;
     color: var(--logo-color);
     font-size: 14px;
+}
+
+.list ul li:first-of-type{
+    font-size: 16px;
+}
+
+.list ul li a:hover {
+    color: white;
+}
+
+.extra-links {
+    display: grid;
+    grid-template-areas: "Company Communities Links Plans OtherPages"
+    "line line line line line"
+    "copy copy copy copy copy";
+    padding: 50px 30px;
+    justify-content: space-between;
 }
 
 .social-links {
@@ -375,3 +373,96 @@ footer {
 .social-links ul li:hover {
     background-color: rgb(100, 100, 100);
 }
+
+@media only screen and (max-width : 810px) {
+    .extra-links{
+        grid-template-areas: "Company Communities Links Plans"
+        "OtherPages OtherPages OtherPages OtherPages"
+        "line line line line"
+        "copy copy copy copy";
+        row-gap: 10px;
+    }
+}
+@media only screen and (max-width : 650px) {
+    .extra-links{
+        grid-template-areas: "Company Communities Links"
+        "Plans Plans OtherPages"
+        "line line line"
+        "copy copy copy";
+        row-gap: 10px;
+    }
+    .social-links{
+        align-self: flex-end;
+    }
+}
+@media only screen and (max-width : 540px) {
+    .extra-links{
+        grid-template-areas: "Company Communities"
+        "Links Plans"
+        "OtherPages OtherPages"
+        "line line"
+        "copy copy";
+        row-gap: 20px;
+    }
+    .list ul li{
+        font-size: 10px;
+    }
+    .list ul li:first-of-type{
+        font-size: 12px;
+    }
+    .social-links{
+        align-self: flex-start;
+    }
+    .social-links ul li{
+        padding-top: 5px;
+        padding-bottom: 3px;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+    .social-links ul li img{
+        width: 12px;
+        height: 12px;
+    }
+}
+@media only screen and (max-width : 400px) {
+    .extra-links{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+.line {
+    grid-area: line;
+    height: 1px;
+    background-color: rgb(50, 50, 50);
+    margin: 20px 0px;
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    grid-area: copy;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--logo-color);
+    font-size: 14px;
+}
+
+@media only screen and (max-width : 410px){
+    .copyright{
+        font-size: 12px;
+        gap: 10px;
+    }
+}
+@media only screen and (max-width : 350px){
+    .copyright{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+

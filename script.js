@@ -1,6 +1,7 @@
 const songObjectArray = []
 const artistArray = []
 
+//Function to get the links to play the songs
 async function getSongLinks() {
     let a = await fetch('http://127.0.0.1:3000/Web%20Dev%20Projects/Spotify-Clone/Songs/')
     let response = await a.text();
@@ -17,6 +18,7 @@ async function getSongLinks() {
     return songs
 }
 
+// This function returns the songs names from songs folder
 async function getSongNames() {
     let a = await fetch('http://127.0.0.1:3000/Web%20Dev%20Projects/Spotify-Clone/Songs/')
     let response = await a.text();
@@ -33,13 +35,18 @@ async function getSongNames() {
     return songNames
 }
 
+//Function to scroll down to view where all songs are displayed
 function toBeScrolled() {
     let toScroll = document.getElementById("toBeScrolled").offsetTop
     let main = document.querySelector(".main-container")
     main.scrollTo({ top: toScroll - 45, behavior: 'smooth' })
+    if(document.querySelector(".side-container").style.left == '5px'){
+        document.querySelector(".side-container").style.left = "-100%"
+        document.querySelector(".main-container").style.opacity = "1"
+    }
 }
 
-
+// Function to display songs in main container, artist names in side container, and Popular Artists Head in main container
 // Songs added in the songs folder must be of the format : {(Song name) + " - " + (Artists name)}.mp3
 // Note : For two or more than two artist use comma between names
 async function createSongListInLibrary(songLinkArray, songNameArray) {
@@ -86,6 +93,7 @@ async function createSongListInLibrary(songLinkArray, songNameArray) {
 
 var audio = new Audio()
 
+// Function to convert the song duration and current time in minutes
 function timeInMinutes(time) {
     let timeString = ''
     if (time != NaN) {
@@ -113,8 +121,9 @@ function timeInMinutes(time) {
 }
 
 let buttonPlayer = document.getElementById("buttonPlayPause")
-let discSvg = document.getElementById("disc")
+let discSvg = document.querySelector(".disc")
 
+//Event listener on the play/pause button in the song bar at bottom
 buttonPlayer.addEventListener('click', function () {
     if (audio.paused) {
         audio.play()
@@ -135,6 +144,7 @@ async function main() {
     let songNamePlayer = document.querySelector(".songname")
     let artistNamePlayer = document.querySelector(".artist-player")
 
+    //Code to add event listener on the play button in front of the songs
     document.querySelectorAll(".play").forEach(button => {
         button.addEventListener('click', function () {
             let songNameDiv = button.closest(".song-name")
@@ -159,10 +169,10 @@ async function main() {
         })
     })
 
-    let widthSeekbar = window.getComputedStyle(document.getElementById('seekbar')).getPropertyValue('width').split("px")[0];
+    // Function to have a responsive seekbar which progresses as the song continues
+    let widthSeekbar = window.getComputedStyle(document.getElementById('seekbar')).width;
     let widthInt = parseInt(widthSeekbar) 
     audio.addEventListener("timeupdate", () => {
-        console.log((widthInt/audio.duration)*audio.currentTime)
         document.querySelector(".total-duration").innerHTML = timeInMinutes(audio.duration)
         document.querySelector(".current-duration").innerHTML = timeInMinutes(audio.currentTime)
 
@@ -170,11 +180,48 @@ async function main() {
         circleStyle.width = `${((widthInt/audio.duration)*audio.currentTime)}px`
     })
 
+    // Function to play the song from where we click the playbar
     document.getElementById("seekbar").addEventListener('click',(e)=>{
-        let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
+        let percent = (e.offsetX/widthInt) * 100;
         document.getElementById("circle").style.width = percent + "%";
         audio.currentTime = (audio.duration * percent)/100
     })
+
+    //Hamburger onclick function
+    document.querySelector(".hamburger").addEventListener('click',()=>{
+        document.querySelector(".side-container").style.left = "5px"
+        document.querySelector(".main-container").style.opacity = "0.5"
+    })
+
+    document.querySelector(".closeButton").addEventListener('click',()=>{
+        document.querySelector(".side-container").style.left = "-100%"
+        document.querySelector(".main-container").style.opacity = "1"
+    })
+
+    // Responsiveness to album-container
+    // let albumContainerWidth = window.getComputedStyle(document.querySelector(".album-container")).width
+    // console.log(albumContainerWidth)
+
+    // responsive()
+    // window.onresize = responsive
+
+    // function responsive(){
+    //     let newWidth = window.getComputedStyle(document.querySelector(".album-container")).width.split("px")[0]
+    //     console.log(newWidth)
+    //     let albumContainer = document.querySelector(".artist-container")
+
+    //     if(newWidth > 1050){
+    //         albumContainer.style.gridTemplateAreas = '"11 12 13 14 15 16" "21 22 23 24 25 26" "31 32 33 34 35 36" "41 42 43 44 45 46";'
+    //     }
+    //     else if(newWidth <= 1050 && newWidth > 870){
+    //         location.reload()
+    //         albumContainer.style.gridTemplateAreas ='"11 12 13 14 15" "21 22 23 24 25" "31 32 33 34 35" "41 42 43 44 45" "51 52 53 54 55"';
+    //     }
+    //     else if(newWidth <= 870){
+    //         location.reload()
+    //         albumContainer.style.gridTemplateAreas = '"11 12 13 14" "21 22 23 24" "31 32 33 34" "41 42 43 44" "51 52 53 54" "61 62 63 64";'
+    //     }
+    // }
 }
 
 main()

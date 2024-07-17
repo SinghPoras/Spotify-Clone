@@ -9,14 +9,20 @@
 }
 .player-controls{
     height: 77px;
-    padding: 0px 5px;
+    width: calc(100vw - 40px);
+    padding: 0px 10px;
     margin: 5px;
+    display: grid;
+    grid-template-areas: "info buttons"
+                         "info seekbar";
     justify-content: space-between;
     align-items: center;
-    background-color: var(--block-color);
+    gap: 5px;
+    background-color: var(--background-color);
     border-radius: 15px;
 }
 .info{
+    grid-area: info;
     display: grid;
     grid-template-areas: "info-img song-name"
                          "info-img artist-name";
@@ -37,43 +43,26 @@
     font-size: 12px;
     grid-area: artist-name;
     align-self: flex-start;
+    max-height: 11px;
+    overflow: hidden;
 }
 .buttons{
     align-items: center;
     justify-content: center;
     gap: 20px;
-}
-.button-duration{
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
+    grid-area: buttons;
 }
 .durationPlaybar{
-    width: 40vw;
-    justify-content: space-between;
-    gap: 40px;
-}
-.duration{
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-.volume-bar{
+    grid-area: seekbar;
+    gap: 20px;
+    min-width: 75vw;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
-#disc img{
-    position: relative;
-    width: 55px;
-    height: 63px;
-    border-radius: 10px;
-    object-fit: cover;
-    top: 2px;
+.seekbar-circle{
+    width: 100%;
 }
 #seekbar{
-    width: 40vw;
     height: 4px;
     background-color: rgba(91, 91, 91, 0.7);
     border-radius: 4px;
@@ -82,12 +71,76 @@
 #circle{
     position: relative;
     height: 4px;
-    width: 4px;
+    width: 0px;
     border-radius: 4px;
     background-color: white;
     transition: width 0.3s;
 }
+.disc img{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+    top: 2px;
+}
 .durationText{
+    min-width: 20px;
     font-size: 14px;
     color: #b3b3b3;
+}
+
+
+@media only screen and (max-width : 950px) {
+    .player-controls{
+        grid-template-areas: "info buttons"
+                             "seekbar seekbar"
+                             ;
+        height: 75px;
+        justify-content: space-between;
+        gap: 0px;
+    }
+    .disc{
+        width: 35px;
+        height: 35px;
+    }
+    .disc img{
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+    }
+    .durationPlaybar{
+        align-self: center;
+    }
+    .seekbar-circle{
+        justify-self: center;
+    }
+    .artist-player{
+        align-self: flex-end;
+        padding: 0px 10px;
+        max-height: 14px;
+        overflow: hidden;
+    }
+    .songname{
+        align-self: flex-end;
+        font-size: 12px;
+        padding: 0px 10px;
+        max-height: 14px;
+        overflow: hidden;
+    }
+    .info{
+        grid-template-areas: " info-img song-name" "info-img artist-name";
+        justify-self: flex-start;
+        align-items: center;
+    }
+    .buttons{
+        justify-content: flex-end;
+    }
+    .buttons button img{
+        height: 20px;
+        width: 20px;
+    }
+    .durationText{
+        font-size: 12px;
+    }
 }
