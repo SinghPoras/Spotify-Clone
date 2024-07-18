@@ -5,7 +5,8 @@
     --font-size: 16px;
     --padding-20: 20px;
     --font-weight-700: 700;
-
+    --topPlay : 136px;
+    --opacityPlay : 0;
 }
 
 .arrow {
@@ -147,6 +148,13 @@
     padding: 0px 10px;
 }
 
+@media only screen and (min-width : 1650px){
+    .album-container{
+        display: flex;
+        gap: 25px;
+    }
+}
+
 @media only screen and (max-width: 1370px) {
     .album-container {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -159,13 +167,13 @@
     }
 }
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 715px) {
     .album-container {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 540px) {
     .album-container {
         grid-template-columns: 1fr 1fr;
     }
@@ -189,7 +197,7 @@
 
 .playButtonAlbum {
     position: absolute;
-    top: 136px;
+    top: var(--topPlay);
     left: 103px;
     padding: 9px 13px;
     padding-top: 12px;
@@ -198,16 +206,15 @@
     width: max-content;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    opacity: var(--opacityPlay);
+    box-shadow: 0px 0px 10px var(--background-color);
     transition: all 0.5s cubic-bezier(0, 0, 0, 0.99);
 }
 
-.playButtonAlbum:hover {
-    opacity: 1;
-    top: 106px;
-    box-shadow: 0px 0px 10px var(--background-color);
+.album-container .card:hover{
+    --opacityPlay : 1;
+    --topPlay : 106px;
 }
-
 
 .company {
     grid-area: Company;
@@ -310,6 +317,10 @@
         max-height: 13px;
         overflow: hidden;
     }
+}
+
+.like-play{
+    gap: 15px;
 }
 
 .lineAfterSongs {

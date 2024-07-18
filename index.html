@@ -17,9 +17,9 @@
         <aside class="side-container">
             <div class="home">
                 <div class="closeButton"><img src="ImagesUsed/close.svg" alt="Close"></div>
-                <ul class="flex">
-                    <li class="flex"><img src="ImagesUsed/logo.svg" alt="SpotifyLogo"></li>
-                    <li class="flex"><img src="ImagesUsed/homeLogo.svg" alt="HomeLogo"> Home</li>
+                <ul class="flex homeList">
+                    <li class="flex" onclick="scrollToTop()"><img src="ImagesUsed/logo.svg" alt="SpotifyLogo"></li>
+                    <li class="flex" onclick="scrollToTop()"><img src="ImagesUsed/homeLogo.svg" alt="HomeLogo"> Home</li>
                     <li class="flex"><img src="ImagesUsed/searchLogo.svg" alt="">Search</li>
                 </ul>
             </div>
@@ -122,7 +122,10 @@
                                 <div class="artist">Karan Aujla</div>
                             </div>
                         </div>
-                        <button id="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
+                        <div class="like-play flex">
+                            <div class="like"><img src="ImagesUsed/unlike.svg" alt="unlikeButton"></div>
+                            <button class="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
+                        </div>
                     </div> -->
                 </div>
                 <div class="lineAfterSongs"></div>
@@ -195,9 +198,9 @@
                 <div class="discription artist-player"></div>
             </div>
             <div class="buttons flex">
-                <button><img src="ImagesUsed/prevButton.svg" alt="PrevButton"></button>
+                <button id="prevButton"><img src="ImagesUsed/prevButton.svg" alt="PrevButton"></button>
                 <button id="buttonPlayPause"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
-                <button><img src="ImagesUsed/nextButton.svg" alt="NextButton"></button>
+                <button id="nextButton"><img src="ImagesUsed/nextButton.svg" alt="NextButton"></button>
             </div>
             <div class="durationPlaybar flex">
                 <div class="current-duration durationText">-:--</div>

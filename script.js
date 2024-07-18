@@ -1,3 +1,4 @@
+var audio = new Audio()
 const songObjectArray = []
 const artistArray = []
 
@@ -37,13 +38,19 @@ async function getSongNames() {
 
 //Function to scroll down to view where all songs are displayed
 function toBeScrolled() {
-    let toScroll = document.getElementById("toBeScrolled").offsetTop
     let main = document.querySelector(".main-container")
+    let toScroll = document.getElementById("toBeScrolled").offsetTop
     main.scrollTo({ top: toScroll - 45, behavior: 'smooth' })
     if(document.querySelector(".side-container").style.left == '5px'){
         document.querySelector(".side-container").style.left = "-100%"
         document.querySelector(".main-container").style.opacity = "1"
     }
+}
+
+//Function to scroll to top when home is pressed
+function scrollToTop(){
+    let main = document.querySelector(".main-container")
+    main.scrollTo({top : 0, behavior: 'smooth'})
 }
 
 // Function to display songs in main container, artist names in side container, and Popular Artists Head in main container
@@ -63,7 +70,7 @@ async function createSongListInLibrary(songLinkArray, songNameArray) {
         }
         let songArtist = element.replace(".mp3", "")
         let songArtistArray = songArtist.split(" - ")
-        playlist.insertAdjacentHTML("beforeend", `<div class="song-name"><div class="count-name flex"><div class="count">${count}.</div><div class="info-library"><div class="info-image"><img src="ImagesUsed/musicLogo.svg" alt="Music"></div><div class="nameSong">${songArtistArray[0]}</div><div class="artist">${songArtistArray[1]}</div></div></div><button class="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button></div>`);
+        playlist.insertAdjacentHTML("beforeend", `<div class="song-name"><div class="count-name flex"><div class="count">${count}.</div><div class="info-library"><div class="info-image"><img src="ImagesUsed/musicLogo.svg" alt="Music"></div><div class="nameSong">${songArtistArray[0]}</div><div class="artist">${songArtistArray[1]}</div></div></div><div class="like-play flex"><div class="like"><img src="ImagesUsed/unlike.svg" alt="unlikeButton"></div><button class="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button></div></div>`);
         songObject.count = count;
         songObject.SongName = `${songArtistArray[0]}`;
         songObject.ArtistName = `${songArtistArray[1]}`;
@@ -91,7 +98,6 @@ async function createSongListInLibrary(songLinkArray, songNameArray) {
     });
 }
 
-var audio = new Audio()
 
 // Function to convert the song duration and current time in minutes
 function timeInMinutes(time) {
@@ -135,14 +141,35 @@ buttonPlayer.addEventListener('click', function () {
     }
 })
 
+let songNamePlayer = document.querySelector(".songname")
+let artistNamePlayer = document.querySelector(".artist-player")
+
+// Play Songs based on index
+function playSong(index){
+    artistNamePlayer.innerHTML = songObjectArray[index].ArtistName
+    songNamePlayer.innerHTML = songObjectArray[index].SongName
+
+    let artistNamePic = songObjectArray[index].ArtistName.split(",")[0]
+    if (audio && !audio.paused) {
+        audio.pause()
+        buttonPlayer.innerHTML = '<img src="ImagesUsed/playButton.svg" alt="PlayPauseButton">'
+    }
+    let link = songObjectArray[index].SongLink
+    audio.src = link
+    audio.play()
+    buttonPlayer.innerHTML = '<img src="ImagesUsed/pauseButton.svg" alt="PlayPauseButton"></img>'
+    discSvg.innerHTML = `<img src="ArtistPic/${artistNamePic}.jpeg" alt="Music">`
+}
+
 async function main() {
+    // Fetch songs links and song names
     let songLinksArray = await getSongLinks()
     let songNameArray = await getSongNames()
 
+    // Add the songs in the library
     await createSongListInLibrary(songLinksArray, songNameArray)
 
-    let songNamePlayer = document.querySelector(".songname")
-    let artistNamePlayer = document.querySelector(".artist-player")
+    let songIndex = 0
 
     //Code to add event listener on the play button in front of the songs
     document.querySelectorAll(".play").forEach(button => {
@@ -151,19 +178,20 @@ async function main() {
             let countDiv = songNameDiv.querySelector(".count")
             for (let i = 0; i < songObjectArray.length; i++) {
                 if (songObjectArray[i].count == countDiv.innerHTML.replace(".", '')) {
-                    artistNamePlayer.innerHTML = songObjectArray[i].ArtistName
-                    songNamePlayer.innerHTML = songObjectArray[i].SongName
-
-                    let artistNamePic = songObjectArray[i].ArtistName.split(",")[0]
-                    if (audio && !audio.paused) {
-                        audio.pause()
-                        buttonPlayer.innerHTML = '<img src="ImagesUsed/playButton.svg" alt="PlayPauseButton">'
-                    }
-                    let link = songObjectArray[i].SongLink
-                    audio.src = link
-                    audio.play()
-                    buttonPlayer.innerHTML = '<img src="ImagesUsed/pauseButton.svg" alt="PlayPauseButton"></img>'
-                    discSvg.innerHTML = `<img src="ArtistPic/${artistNamePic}.jpeg" alt="Music">`
+                    songIndex = i
+                    playSong(songIndex)
+                    document.getElementById("prevButton").addEventListener("click",()=>{
+                        if(songIndex>0){
+                            songIndex--
+                            playSong(songIndex)
+                        }
+                    })
+                    document.getElementById("nextButton").addEventListener("click",()=>{
+                        if(songIndex<songObjectArray.length){
+                            songIndex++
+                            playSong(songIndex)
+                        }
+                    })
                 }
             }
         })
@@ -172,12 +200,28 @@ async function main() {
     // Function to have a responsive seekbar which progresses as the song continues
     let widthSeekbar = window.getComputedStyle(document.getElementById('seekbar')).width;
     let widthInt = parseInt(widthSeekbar) 
+
+    // Function to correct the width of seekbar is window is resized
+    window.onresize = getWidthSeekbar;
+    function getWidthSeekbar(){
+        widthSeekbar = window.getComputedStyle(document.getElementById('seekbar')).width;
+        widthInt = parseInt(widthSeekbar) 
+    }
+
+    // Function to increase width of seekbar as the song plays
     audio.addEventListener("timeupdate", () => {
         document.querySelector(".total-duration").innerHTML = timeInMinutes(audio.duration)
         document.querySelector(".current-duration").innerHTML = timeInMinutes(audio.currentTime)
+        
+        // Code for Auto Next
+        if(audio.duration == audio.currentTime && songIndex < songObjectArray.length){
+            songIndex++
+            playSong(songIndex)
+        }
 
         let circleStyle = document.getElementById('circle').style
         circleStyle.width = `${((widthInt/audio.duration)*audio.currentTime)}px`
+
     })
 
     // Function to play the song from where we click the playbar
@@ -192,36 +236,19 @@ async function main() {
         document.querySelector(".side-container").style.left = "5px"
         document.querySelector(".main-container").style.opacity = "0.5"
     })
-
     document.querySelector(".closeButton").addEventListener('click',()=>{
-        document.querySelector(".side-container").style.left = "-100%"
+        document.querySelector(".side-container").style.left = "-200%"
         document.querySelector(".main-container").style.opacity = "1"
     })
 
-    // Responsiveness to album-container
-    // let albumContainerWidth = window.getComputedStyle(document.querySelector(".album-container")).width
-    // console.log(albumContainerWidth)
-
-    // responsive()
-    // window.onresize = responsive
-
-    // function responsive(){
-    //     let newWidth = window.getComputedStyle(document.querySelector(".album-container")).width.split("px")[0]
-    //     console.log(newWidth)
-    //     let albumContainer = document.querySelector(".artist-container")
-
-    //     if(newWidth > 1050){
-    //         albumContainer.style.gridTemplateAreas = '"11 12 13 14 15 16" "21 22 23 24 25 26" "31 32 33 34 35 36" "41 42 43 44 45 46";'
-    //     }
-    //     else if(newWidth <= 1050 && newWidth > 870){
-    //         location.reload()
-    //         albumContainer.style.gridTemplateAreas ='"11 12 13 14 15" "21 22 23 24 25" "31 32 33 34 35" "41 42 43 44 45" "51 52 53 54 55"';
-    //     }
-    //     else if(newWidth <= 870){
-    //         location.reload()
-    //         albumContainer.style.gridTemplateAreas = '"11 12 13 14" "21 22 23 24" "31 32 33 34" "41 42 43 44" "51 52 53 54" "61 62 63 64";'
-    //     }
-    // }
+    // Function to like song and add the song to favourites
+    document.querySelectorAll(".like").forEach(likeButton => {
+    likeButton.addEventListener('click', function () {
+        let songToLike = likeButton.closest(".song-name")
+        let IndexOfSong = songToLike.querySelector(".count").innerHTML.replace(".",'') 
+        likeButton.innerHTML = '<img src="ImagesUsed/like.svg" alt="likeButton"></img>'
+    })
+})
 }
 
 main()
