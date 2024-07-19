@@ -232,6 +232,7 @@ async function main() {
             songIndex++
             playSong(songIndex)
         }
+        
         let circleStyle = document.getElementById('circle').style
         circleStyle.width = `${((widthInt / audio.duration) * audio.currentTime)}px`
     })
