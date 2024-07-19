@@ -171,7 +171,6 @@ async function main() {
                 let main = document.querySelector(".main-container")
                 main.querySelectorAll(".nameSong").forEach(e => {
                     if(e.innerHTML == element.SongName){
-                        console.log(e)
                         let songCard = e.closest(".song-name")
                         let likeButtonInSongCard = songCard.querySelector(".like")
                         let imageInLike = likeButtonInSongCard.querySelector("img")
