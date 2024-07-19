@@ -78,7 +78,7 @@ body{
     align-items: center;
     padding: var(--padding-20);
     position: sticky;
-    top: 0px;
+    top: -1px;
     background-color: var(--background-color);
     z-index: 1;
 }
@@ -90,49 +90,72 @@ body{
 }
 .albums-name{
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     overflow-y: auto;
     border-radius: 10px;
     box-sizing: border-box;
     padding: 0px 10px;
 }
-.artist-album-card{
-    display: grid;
-    padding: 5px 10px;
-    grid-template-areas: "image artistname"
-                         "image description";
-    border-radius: 10px;
-    justify-content: flex-start;
-}
 .link-to-your-songs{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: var(--font-weight-700);
-    padding: 20px;
+    padding: 10px;
+    padding-left: 20px;
     color: var(--logo-color);
     cursor: pointer;
     align-items: center;
     opacity: 0.6;
+    gap: 2px;
 }
 .link-to-your-songs img{
     padding-top: 3px;
-    height: 25px;
-    width: 25px;
+    height: 24px;
+    width: 20px;
 }
 .link-to-your-songs:hover{
     opacity: 1;
 }
-.imageLibrary{
-    grid-area: image;
-    max-width: 70px;
+.likedSongs{
+    font-size: 16px;
+    padding: 10px;
+    color: var(--logo-color);
+    font-weight: var(--font-weight-700);
+    gap: 5px;
 }
-.imageLibrary img{
-    width: 65px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 50%;
+.likedSongs img{
+    width: 16px;
 }
-.artist-album-card:hover{
+.favourite-card{
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 10px;
+}
+.favourite-card:hover{
     background-color: var(--block-color);
+}
+.song-artist-name{
+    gap: 10px;
+    align-items: center;
+}
+.nameOfSong{
+    font-size: 16px;
+}
+.dot{
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: var(--logo-color);
+    min-width: 3px;
+    min-height: 3px;
+}
+.nameOfArtist{
+    font-size: 14px;
+    color: var(--logo-color);
+}
+.link img{
+    width: 18px;
+    padding: 5px;
 }
 .createPlaylist{
     flex-direction: column;
@@ -199,6 +222,7 @@ body{
     font-weight: var(--font-weight-700);
     border: 1px solid var(--logo-color);
     transition: transform 0.5s;
+    cursor: no-drop;
 }
 .hamburger{
     width: 0px;

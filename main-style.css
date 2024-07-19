@@ -317,12 +317,18 @@
         max-height: 13px;
         overflow: hidden;
     }
+    .like img{
+        width: 20px;
+    }
 }
 
 .like-play{
     gap: 15px;
 }
 
+.like{
+    cursor: pointer;
+}
 .lineAfterSongs {
     width: 95%;
     margin: auto;
