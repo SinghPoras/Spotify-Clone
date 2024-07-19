@@ -6,7 +6,7 @@
     display: flex;
 }
 ::-webkit-scrollbar{
-    width: 8px;
+    width: 6px;
 }
 ::-webkit-scrollbar-thumb{
     background-color: gray;
@@ -27,5 +27,3 @@ a{
 html{
     scroll-behavior: smooth;
 }
-
-/* 1130 ki jab width ho jaye to side-bar hta deni h */
