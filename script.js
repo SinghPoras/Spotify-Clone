@@ -11,7 +11,7 @@ let favouriteContainer = document.getElementById("favourites-container")
 
 //Function to get the links to play the songs
 async function getSongLinks() {
-    let a = await fetch('http://127.0.0.1:3000/Web%20Dev%20Projects/Spotify-Clone/Songs/')
+    let a = await fetch('/Songs/')
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -28,7 +28,7 @@ async function getSongLinks() {
 
 // This function returns the songs names from songs folder
 async function getSongNames() {
-    let a = await fetch('http://127.0.0.1:3000/Web%20Dev%20Projects/Spotify-Clone/Songs/')
+    let a = await fetch('/Songs/')
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -69,31 +69,41 @@ async function createSongListInLibrary(songLinkArray, songNameArray) {
     let count = 1;
     songNameArray.forEach(element => {
         let songObject = {
-            count: '',
             SongName: '',
             ArtistName: '',
             SongLink: ''
         }
         let songArtist = element.replace(".mp3", "")
-        let songArtistArray = songArtist.split(" - ")
-        playlist.insertAdjacentHTML("beforeend", `<div class="song-name"><div class="count-name flex"><div class="count">${count}.</div><div class="info-library"><div class="info-image"><img src="ImagesUsed/musicLogo.svg" alt="Music"></div><div class="nameSong">${songArtistArray[0]}</div><div class="artist">${songArtistArray[1]}</div></div></div><div class="like-play flex"><div class="like"><img src="ImagesUsed/unlike.svg" alt="unlikeButton"></div><button class="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button></div></div>`);
-        songObject.count = count;
-        songObject.SongName = `${songArtistArray[0]}`;
-        songObject.ArtistName = `${songArtistArray[1]}`;
-
-        if (!artistArray.includes(`${songArtistArray[1].split(", ")[0]}`)) {
-            artistArray.push(songArtistArray[1].split(", ")[0])
-            artistContainer.insertAdjacentHTML("beforeend", `<div class="card">
-            <button>
-                <img src="ArtistPic/${songArtistArray[1].split(", ")[0]}.jpeg" alt="KaranAujla">
-                <div class="album-playlist-name">${songArtistArray[1].split(", ")[0]}</div>
-                <div class="discription">Artist</div>
-            </button>
-            </div>`)
+        songArtist = songArtist.replace("<img class=\"icon\" src=\"/_autoindex/assets/icons/music.svg\" alt=\"[SND]\">", "")
+        if (songArtist != "Name" && songArtist != "Last Modified" && songArtist != "Size" && songArtist != "<img class=\"icon\" src=\"/_autoindex/assets/icons/corner-left-up.svg\" alt=\"Up\">Parent Directory" && songArtist != ".htaccess") {
+            let songArtistArray = songArtist.split(" - ")
+            playlist.insertAdjacentHTML("beforeend", `<div class="song-name">
+            <div class="info-library">
+                <div class="info-image"><img src="ImagesUsed/musicLogo.svg" alt="Music"></div>
+                <div class="nameSong">${songArtistArray[0]}</div>
+                <div class="artist">${songArtistArray[1]}</div>
+            </div>
+            <div class="like-play flex">
+                <div class="like"><img src="ImagesUsed/unlike.svg" alt="unlikeButton"></div>
+                <button class="play"><img src="ImagesUsed/playButton.svg" alt="PlayPauseButton"></button>
+            </div>
+        </div>`);
+            songObject.SongName = `${songArtistArray[0]}`;
+            songObject.ArtistName = `${songArtistArray[1]}`;
+            if (songArtistArray[1] && !artistArray.includes(`${songArtistArray[1].split(", ")[0]}`)) {
+                artistArray.push(songArtistArray[1].split(", ")[0])
+                artistContainer.insertAdjacentHTML("beforeend", `<div class="card">
+                <button>
+                    <img src="ArtistPic/${songArtistArray[1].split(", ")[0]}.jpeg" alt="KaranAujla">
+                    <div class="album-playlist-name">${songArtistArray[1].split(", ")[0]}</div>
+                    <div class="discription">Artist</div>
+                </button>
+                </div>`)
+            }
+            songObject.SongLink = songLinkArray[count - 1];
+            songObjectArray.push(songObject)
+            count++;
         }
-        songObject.SongLink = songLinkArray[count - 1];
-        songObjectArray.push(songObject)
-        count++;
     });
 }
 
@@ -170,7 +180,7 @@ async function main() {
                 favouriteContainer.insertAdjacentHTML('beforeend', `<div class="favourite-card flex"><div class="song-artist-name flex"><div class="nameOfSong">${element.SongName}</div><div class="dot"></div><div class="nameOfArtist">${element.ArtistName}</div></div><div class="link"><img src="ImagesUsed/playButton.svg" alt="playButton"></div></div>`)
                 let main = document.querySelector(".main-container")
                 main.querySelectorAll(".nameSong").forEach(e => {
-                    if(e.innerHTML == element.SongName){
+                    if (e.innerHTML == element.SongName) {
                         let songCard = e.closest(".song-name")
                         let likeButtonInSongCard = songCard.querySelector(".like")
                         let imageInLike = likeButtonInSongCard.querySelector("img")
@@ -187,9 +197,9 @@ async function main() {
     document.querySelectorAll(".play").forEach(button => {
         button.addEventListener('click', function () {
             let songNameDiv = button.closest(".song-name")
-            let countDiv = songNameDiv.querySelector(".count")
+            let songName = songNameDiv.querySelector(".nameSong")
             for (let i = 0; i < songObjectArray.length; i++) {
-                if (songObjectArray[i].count == countDiv.innerHTML.replace(".", '')) {
+                if (songObjectArray[i].SongName == songName.innerHTML) {
                     songIndex = i
                     playSong(songIndex)
                 }
@@ -232,7 +242,7 @@ async function main() {
             songIndex++
             playSong(songIndex)
         }
-        
+
         let circleStyle = document.getElementById('circle').style
         circleStyle.width = `${((widthInt / audio.duration) * audio.currentTime)}px`
     })
@@ -258,15 +268,33 @@ async function main() {
     document.querySelectorAll(".like").forEach(likeButton => {
         likeButton.addEventListener('click', function () {
             let songToLike = likeButton.closest(".song-name")
-            let IndexOfSong = songToLike.querySelector(".count").innerHTML.replace(".", '')
+            let NameOfSong = songToLike.querySelector(".nameSong").innerHTML
             let image = likeButton.querySelector('img')
             if (image.src.includes("ImagesUsed/unlike.svg")) {
                 image.src = "ImagesUsed/like.svg"
-                favouriteContainer.insertAdjacentHTML('beforeend', `<div class="favourite-card flex"><div class="song-artist-name flex"><div class="nameOfSong">${songObjectArray[IndexOfSong - 1].SongName}</div><div class="dot"></div><div class="nameOfArtist">${songObjectArray[IndexOfSong - 1].ArtistName}</div></div><div class="link"><img src="ImagesUsed/playButton.svg" alt="playButton"></div></div>`)
-                if(!likedArray.includes(songObjectArray[IndexOfSong-1])){
-                    likedArray.push(songObjectArray[IndexOfSong - 1])
-                }
+                favouriteContainer.insertAdjacentHTML('beforeend', `<div class="favourite-card flex"><div class="song-artist-name flex"><div class="nameOfSong">${NameOfSong}</div><div class="dot"></div><div class="nameOfArtist">${songToLike.querySelector(".artist").innerHTML}</div></div><div class="link"><img src="ImagesUsed/playButton.svg" alt="playButton"></div></div>`)
+                songObjectArray.forEach(songObject => {
+                    if (songObject.SongName == NameOfSong) {
+                        if (!likedArray.includes(songObject)) {
+                            likedArray.push(songObject)
+                        }
+                    }
+                })
                 localStorage.setItem("likedArray", JSON.stringify(likedArray))
+
+                // Function to play song from favourite container if a new song is added in the favourite container
+                favouriteContainer.querySelectorAll(".link").forEach(playButton => {
+                    playButton.addEventListener('click', function () {
+                        let card = playButton.closest(".favourite-card")
+                        let songNameToBePlayed = card.querySelector(".nameOfSong")
+                        for (let i = 0; i < songObjectArray.length; i++) {
+                            if (songObjectArray[i].SongName == songNameToBePlayed.innerHTML) {
+                                songIndex = i
+                                playSong(songIndex)
+                            }
+                        }
+                    })
+                })
             }
             else {
                 image.src = "ImagesUsed/unlike.svg"
@@ -287,13 +315,13 @@ async function main() {
         })
     })
 
-    // Function to play song from favourite container
+    // Function to play song from favourite container while they are loaded from local storage
     favouriteContainer.querySelectorAll(".link").forEach(playButton => {
-        playButton.addEventListener('click', function(){
+        playButton.addEventListener('click', function () {
             let card = playButton.closest(".favourite-card")
             let songNameToBePlayed = card.querySelector(".nameOfSong")
-            for(let i=0; i<songObjectArray.length; i++){
-                if(songObjectArray[i].SongName == songNameToBePlayed.innerHTML){
+            for (let i = 0; i < songObjectArray.length; i++) {
+                if (songObjectArray[i].SongName == songNameToBePlayed.innerHTML) {
                     songIndex = i
                     playSong(songIndex)
                 }

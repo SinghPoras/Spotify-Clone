@@ -228,6 +228,7 @@ body {
 .link img {
     width: 18px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .createPlaylist {
@@ -606,17 +607,6 @@ body {
     align-items: center;
 }
 
-.count-name {
-    align-items: center;
-    gap: 20px;
-}
-
-.count {
-    color: var(--logo-color);
-    font-size: 20px;
-    width: 38px;
-}
-
 .nameSong {
     align-self: flex-end;
     padding: 5px 20px;
@@ -652,11 +642,6 @@ body {
 }
 
 @media only screen and (max-width : 540px) {
-    .count {
-        font-size: 16px;
-        width: 31px;
-    }
-
     .info-image {
         width: 20px;
     }
@@ -883,6 +868,8 @@ body {
     gap: 5px;
     background-color: var(--background-color);
     border-radius: 15px;
+    position: sticky;
+    bottom: 0px;
 }
 
 .info {
