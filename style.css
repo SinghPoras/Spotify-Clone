@@ -81,7 +81,7 @@ body {
     border-radius: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: calc(100vh - 106px);
+    height: calc(100dvh - 106px);
     box-sizing: border-box;
     transition: opacity 0.5s;
 }
@@ -327,7 +327,7 @@ body {
     }
 
     .main-container {
-        width: calc(100vw - 20px);
+        width: calc(100dvw - 20px);
     }
 
     .hamburger {
@@ -344,7 +344,7 @@ body {
 
     .main-container,
     .side-container {
-        height: calc(100vh - 105px);
+        height: calc(100dvh - 105px);
     }
 }
 
