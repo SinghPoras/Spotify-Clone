@@ -1,5 +1,5 @@
 ## About the Project
-1. This is my second Web Development project using HTML, CSS & JavaScript. In this project, I made a Spotify Clone. I had also hosted this project using a free subdomain.
+- This is my second Web Development project using HTML, CSS & JavaScript. In this project, I made a Spotify Clone. I had also hosted this project using a free subdomain.
 
 ## Functioning of Page
 - The Page is able to play, pause, like, remove like, play next or previous song.
@@ -8,3 +8,5 @@
 - The page is responsive for mobile phones, tablets, laptops/PCs, or any other bigger resolution device.
 
 Website Link : [SpotifyClonePorasSingh](https://www.spotifyporassingh.freewebhostmost.com)
+
+Note: I have not uploaded Songs folder in the Github Repository. 
